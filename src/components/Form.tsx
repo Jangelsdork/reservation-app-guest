@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import React from "react";
+import { syne, montserrat, playfair } from "@/app/fonts";
 type Props = {};
 
 interface FormData {
@@ -47,104 +48,159 @@ const Form = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh]">
-      <form className="flex flex-col w-[80vw]" onSubmit={handleSubmit}>
-      <div className="grid grid-cols-2 gap-2">
-        <div className="flex flex-col">
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-        </div>
+    <div>
+      <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh] bg-neutral-600">
+            <div className={`${syne.className} text-amber-100 font-extrabold text-4xl w-[80vw] pb-10`}>
+            Hello,
+            <div className={`${playfair.className} text-amber-100 font-light text-2xl w-[80vw]`}>Please fill the form below to make a new booking at</div>
+            <div className={`${syne.className} text-amber-100 font-extrabold text-lg w-[80vw] tracking-wider`}>Gensyn Bar</div>
+            </div>
+        <form className="flex flex-col w-[80vw]" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="flex flex-col">
+              <label
+                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                htmlFor="firstName"
+              >
+                First Name:
+              </label>
+              <input
+                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </div>
 
-        
-        <div className="flex flex-col">
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-        </div>
-        </div>
+            <div className="flex flex-col">
+              <label
+                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                htmlFor="lastName"
+              >
+                Last Name:
+              </label>
+              <input
+                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
 
-        <br />
-        <div className="flex flex-col">
-          <label htmlFor="email">Email Address:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <br />
-        <div className="flex flex-col">
-          <label htmlFor="phoneNumber">Phone Number:</label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-          />
-        </div>
-        <br />
-        <div className="grid grid-cols-2 gap-2">
-        <div className="flex flex-col">
-          <label htmlFor="date">Date:</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="bookingTime">Booking Time:</label>
-          <input
-            type="time"
-            id="bookingTime"
-            name="bookingTime"
-            value={formData.bookingTime}
-            onChange={handleChange}
-          />
-        </div>
-        </div>
-        <br />
-        <div className="grid grid-cols-2 gap-2">
-        <div className="flex flex-col">
-          <label htmlFor="numberOfGuests">Number of Guests:</label>
-          <input
-            type="number"
-            id="numberOfGuests"
-            name="numberOfGuests"
-            value={formData.numberOfGuests}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="preferOutdoors">Prefer Outdoors:</label>
-          <input
-            type="checkbox"
-            id="preferOutdoors"
-            name="preferOutdoors"
-            checked={formData.preferOutdoors}
-            onChange={handleChange}
-          />
-        </div>
-        </div>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+          <div className="flex flex-col pt-3">
+            <label
+              className={`${montserrat.className} text-amber-100 font-light text-xs`}
+              htmlFor="email"
+            >
+              Email Address:
+            </label>
+            <input
+              className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex flex-col pt-3">
+            <label
+              className={`${montserrat.className} text-amber-100 font-light text-xs`}
+              htmlFor="phoneNumber"
+            >
+              Phone Number:
+            </label>
+            <input
+              className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2 pt-3">
+            <div className="flex flex-col">
+              <label
+                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                htmlFor="date"
+              >
+                Date:
+              </label>
+              <input
+                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                type="date"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label
+                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                htmlFor="bookingTime"
+              >
+                Booking Time:
+              </label>
+              <input
+                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                type="time"
+                id="bookingTime"
+                name="bookingTime"
+                value={formData.bookingTime}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-2 pt-3 pb-6">
+            <div className="flex flex-col ">
+              <label
+                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                htmlFor="numberOfGuests"
+              >
+                Number of Guests:
+              </label>
+              <input
+                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                type="number"
+                id="numberOfGuests"
+                name="numberOfGuests"
+                value={formData.numberOfGuests}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label
+                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                htmlFor="preferOutdoors"
+              >
+                Prefer Outdoors:
+              </label>
+              <input
+                className="bg-zinc-800 p-0.5"
+                type="checkbox"
+                id="preferOutdoors"
+                name="preferOutdoors"
+                checked={formData.preferOutdoors}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <button
+            className={`${montserrat.className} font-light text-xs text-neutral-600 bg-amber-100 p-2 `}
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
