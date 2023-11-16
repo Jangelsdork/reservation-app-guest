@@ -26,7 +26,11 @@ const Form = () => {
     preferOutdoors: false,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value, type, checked } = e.target;
     const fieldValue = type === "checkbox" ? checked : value;
 
@@ -45,100 +49,99 @@ const Form = () => {
   return (
     <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh]">
       <form className="flex flex-col w-[80vw]" onSubmit={handleSubmit}>
-        <label className="">
-          First Name:
+      <div className="grid grid-cols-2 gap-2">
+        <div className="flex flex-col">
+          <label htmlFor="firstName">First Name:</label>
           <input
             type="text"
+            id="firstName"
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            className="text-black"
           />
-        </label>
-        <br />
-        <label>
-          Last Name:
+        </div>
+
+        
+        <div className="flex flex-col">
+          <label htmlFor="lastName">Last Name:</label>
           <input
             type="text"
+            id="lastName"
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
-            className="text-black"
-
           />
-        </label>
+        </div>
+        </div>
+
         <br />
-        <label>
-          Email Address:
+        <div className="flex flex-col">
+          <label htmlFor="email">Email Address:</label>
           <input
             type="email"
+            id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="text-black"
-
           />
-        </label>
+        </div>
         <br />
-        <label>
-          Phone Number:
+        <div className="flex flex-col">
+          <label htmlFor="phoneNumber">Phone Number:</label>
           <input
             type="tel"
+            id="phoneNumber"
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleChange}
-            className="text-black"
-
           />
-        </label>
+        </div>
         <br />
-        <label>
-          Date:
+        <div className="grid grid-cols-2 gap-2">
+        <div className="flex flex-col">
+          <label htmlFor="date">Date:</label>
           <input
             type="date"
+            id="date"
             name="date"
             value={formData.date}
             onChange={handleChange}
-            className="text-black"
-
           />
-        </label>
-        <br />
-        <label>
-          Booking Time:
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="bookingTime">Booking Time:</label>
           <input
             type="time"
+            id="bookingTime"
             name="bookingTime"
             value={formData.bookingTime}
             onChange={handleChange}
-            className="text-black"
-
           />
-        </label>
+        </div>
+        </div>
         <br />
-        <label>
-          Number of Guests:
+        <div className="grid grid-cols-2 gap-2">
+        <div className="flex flex-col">
+          <label htmlFor="numberOfGuests">Number of Guests:</label>
           <input
             type="number"
+            id="numberOfGuests"
             name="numberOfGuests"
             value={formData.numberOfGuests}
             onChange={handleChange}
-            className="text-black"
-
           />
-        </label>
-        <br />
-        <label>
-          Prefer Outdoors:
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="preferOutdoors">Prefer Outdoors:</label>
           <input
             type="checkbox"
+            id="preferOutdoors"
             name="preferOutdoors"
             checked={formData.preferOutdoors}
             onChange={handleChange}
-            className="text-black"
-
           />
-        </label>
+        </div>
+        </div>
         <br />
         <button type="submit">Submit</button>
       </form>
