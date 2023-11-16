@@ -2,6 +2,12 @@
 import { useState } from "react";
 import React from "react";
 import { syne, montserrat, playfair } from "@/app/fonts";
+import { useTheme } from "next-themes";
+
+
+
+
+
 type Props = {};
 
 interface FormData {
@@ -16,7 +22,12 @@ interface FormData {
 }
 
 const Form = () => {
-  const [formData, setFormData] = useState<FormData>({
+
+    const { theme, setTheme } = useTheme()
+
+
+
+    const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     email: "",
@@ -50,12 +61,25 @@ const Form = () => {
   return (
     <div>
       <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh] bg-neutral-600">
-            <div className={`${syne.className} text-amber-100 font-extrabold text-4xl w-[80vw] pb-10`}>
-            Hello,
-            <div className={`${playfair.className} text-amber-100 font-light text-2xl w-[80vw]`}>Please fill the form below to make a new booking at</div>
-            <div className={`${syne.className} text-amber-100 font-extrabold text-lg w-[80vw] tracking-wider`}>Gensyn Bar</div>
-            </div>
-        <form className="flex flex-col w-[80vw]" onSubmit={handleSubmit}>
+        <div
+          className={`${syne.className} text-amber-100 font-extrabold text-4xl w-[80vw] sm:w-[60vw] pb-10`}
+        >
+          Hello,
+          <div
+            className={`${playfair.className} text-amber-100 font-extralight text-2xl `}
+          >
+            Please fill the form below to make a new booking at
+          </div>
+          <div
+            className={`${syne.className} text-amber-100 font-extrabold text-lg  tracking-wider`}
+          >
+            Gensyn Bar
+          </div>
+        </div>
+        <form
+          className="flex flex-col w-[80vw] sm:w-[60vw]"
+          onSubmit={handleSubmit}
+        >
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col">
               <label
@@ -177,19 +201,25 @@ const Form = () => {
             </div>
             <div className="flex flex-col">
               <label
-                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                className={`${montserrat.className} text-amber-100 font-light text-xs `}
                 htmlFor="preferOutdoors"
               >
                 Prefer Outdoors:
               </label>
-              <input
-                className="bg-zinc-800 p-0.5"
-                type="checkbox"
-                id="preferOutdoors"
-                name="preferOutdoors"
-                checked={formData.preferOutdoors}
-                onChange={handleChange}
-              />
+              <label
+                htmlFor="preferOutdoors"
+                className=" mt-0.5 relative inline-flex items-center cursor-pointer"
+              >
+                <input
+                  className="sr-only peer"
+                  type="checkbox"
+                  id="preferOutdoors"
+                  name="preferOutdoors"
+                  checked={formData.preferOutdoors}
+                  onChange={handleChange}
+                />
+                <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-zinc-800 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-100"></div>
+              </label>
             </div>
           </div>
 
@@ -200,6 +230,7 @@ const Form = () => {
             Submit
           </button>
         </form>
+        The current theme is: {theme}
       </div>
     </div>
   );
