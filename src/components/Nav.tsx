@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 type Props = {};
 
-const nav = () => {
+const Nav = () => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme();
 
@@ -17,11 +17,9 @@ const nav = () => {
 
   function handleClick() {
     setTheme("light");
-    console.log(theme);
   }
   function handleClick2() {
     setTheme("dark");
-    console.log(theme);
   }
 
 
@@ -55,4 +53,4 @@ const nav = () => {
   );
 };
 
-export default nav;
+export default Nav;
