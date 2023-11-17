@@ -87,7 +87,7 @@ const Form = () => {
                 First Name:
               </label>
               <input
-                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                className={`${montserrat.className} bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
                 type="text"
                 id="firstName"
                 name="firstName"
@@ -98,13 +98,13 @@ const Form = () => {
 
             <div className="flex flex-col">
               <label
-                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
                 htmlFor="lastName"
               >
                 Last Name:
               </label>
               <input
-                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                className={`${montserrat.className} bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
                 type="text"
                 id="lastName"
                 name="lastName"
@@ -116,13 +116,13 @@ const Form = () => {
 
           <div className="flex flex-col pt-3">
             <label
-              className={`${montserrat.className} text-amber-100 font-light text-xs`}
+              className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
               htmlFor="email"
             >
               Email Address:
             </label>
             <input
-              className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+              className={`${montserrat.className} bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
               type="email"
               id="email"
               name="email"
@@ -132,13 +132,13 @@ const Form = () => {
           </div>
           <div className="flex flex-col pt-3">
             <label
-              className={`${montserrat.className} text-amber-100 font-light text-xs`}
+              className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
               htmlFor="phoneNumber"
             >
               Phone Number:
             </label>
             <input
-              className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+              className={`${montserrat.className}  bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
               type="tel"
               id="phoneNumber"
               name="phoneNumber"
@@ -149,13 +149,13 @@ const Form = () => {
           <div className="grid grid-cols-2 gap-2 pt-3">
             <div className="flex flex-col">
               <label
-                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
                 htmlFor="date"
               >
                 Date:
               </label>
               <input
-                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                className={`${montserrat.className} bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
                 type="date"
                 id="date"
                 name="date"
@@ -165,13 +165,13 @@ const Form = () => {
             </div>
             <div className="flex flex-col">
               <label
-                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
                 htmlFor="bookingTime"
               >
                 Booking Time:
               </label>
               <input
-                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                className={`${montserrat.className}  bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
                 type="time"
                 id="bookingTime"
                 name="bookingTime"
@@ -183,13 +183,13 @@ const Form = () => {
           <div className="grid grid-cols-2 gap-2 pt-3 pb-6">
             <div className="flex flex-col ">
               <label
-                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
                 htmlFor="numberOfGuests"
               >
                 Number of Guests:
               </label>
               <input
-                className={`${montserrat.className} bg-zinc-800 font-light text-s p-0.5`}
+                className={`${montserrat.className}  bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
                 type="number"
                 id="numberOfGuests"
                 name="numberOfGuests"
@@ -199,7 +199,7 @@ const Form = () => {
             </div>
             <div className="flex flex-col">
               <label
-                className={`${montserrat.className} text-amber-100 font-light text-xs `}
+                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs `}
                 htmlFor="preferOutdoors"
               >
                 Prefer Outdoors:
@@ -216,13 +216,13 @@ const Form = () => {
                   checked={formData.preferOutdoors}
                   onChange={handleChange}
                 />
-                <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-zinc-800 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-100"></div>
+                <div className="w-11 h-6 bg-gray-200  rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-zinc-800 peer-checked:after:bg-green-200 dark:peer-checked:after:bg-zinc-800 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-stone-50 dark:peer-checked:bg-amber-100"></div>
               </label>
             </div>
           </div>
 
           <button
-            className={`${montserrat.className} font-light text-xs text-neutral-600 bg-amber-100 p-2 `}
+            className={`${montserrat.className} font-light text-xs text-stone-50 dark:text-neutral-600 bg-neutral-600 dark:bg-amber-100 p-2 `}
             type="submit"
           >
             Submit
