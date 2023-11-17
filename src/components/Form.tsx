@@ -37,11 +37,10 @@ const Form = () => {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement >
   ) => {
     const { name, value, type, checked } = e.target;
+
     const fieldValue = type === "checkbox" ? checked : value;
 
     setFormData({
