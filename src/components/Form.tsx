@@ -2,7 +2,6 @@
 import { useState } from "react";
 import React from "react";
 import { syne, montserrat, playfair } from "@/app/fonts";
-import { useTheme } from "next-themes";
 
 
 
@@ -23,7 +22,6 @@ interface FormData {
 
 const Form = () => {
 
-    const { theme, setTheme } = useTheme()
 
 
 
@@ -60,7 +58,7 @@ const Form = () => {
 
   return (
     <div>
-      <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh] bg-neutral-600">
+      <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh] bg-green-200 dark:bg-neutral-600 ">
         <div
           className={`${syne.className} text-amber-100 font-extrabold text-4xl w-[80vw] sm:w-[60vw] pb-10`}
         >
@@ -230,7 +228,7 @@ const Form = () => {
             Submit
           </button>
         </form>
-        The current theme is: {theme}
+      
       </div>
     </div>
   );
