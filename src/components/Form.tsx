@@ -60,16 +60,16 @@ const Form = () => {
     <div>
       <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh] bg-green-200 dark:bg-neutral-600 ">
         <div
-          className={`${syne.className} text-amber-100 font-extrabold text-4xl w-[80vw] sm:w-[60vw] pb-10`}
+          className={`${syne.className} text-black dark:text-amber-100 font-extrabold text-4xl w-[80vw] sm:w-[60vw] pb-10`}
         >
           Hello,
           <div
-            className={`${playfair.className} text-amber-100 font-extralight text-2xl `}
+            className={`${playfair.className} text-black dark:text-amber-100 font-extralight text-2xl `}
           >
             Please fill the form below to make a new booking at
           </div>
           <div
-            className={`${syne.className} text-amber-100 font-extrabold text-lg  tracking-wider`}
+            className={`${syne.className} text-black dark:text-amber-100 font-extrabold text-lg  tracking-wider`}
           >
             Gensyn Bar
           </div>
@@ -81,7 +81,7 @@ const Form = () => {
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col">
               <label
-                className={`${montserrat.className} text-amber-100 font-light text-xs`}
+                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
                 htmlFor="firstName"
               >
                 First Name:
