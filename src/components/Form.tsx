@@ -154,7 +154,7 @@ const Form = () => {
                 Date:
               </label>
               <input
-                className={`${montserrat.className} bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
+                className={`${montserrat.className} bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5 appearance-none`}
                 type="date"
                 id="date"
                 name="date"
@@ -164,7 +164,7 @@ const Form = () => {
             </div>
             <div className="flex flex-col">
               <label
-                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
+                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs appearance-none`}
                 htmlFor="bookingTime"
               >
                 Booking Time:
