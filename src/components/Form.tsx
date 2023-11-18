@@ -154,7 +154,7 @@ const Form = () => {
                 Date:
               </label>
               <input
-                className={`${montserrat.className} bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5 appearance-none`}
+                className={`${montserrat.className} bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5 max-w-full	 appearance-none`}
                 type="date"
                 id="date"
                 name="date"
@@ -170,7 +170,7 @@ const Form = () => {
                 Booking Time:
               </label>
               <input
-                className={`${montserrat.className}  bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5 appearance-none`}
+                className={`${montserrat.className}  bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5 max-w-full appearance-none`}
                 type="time"
                 id="bookingTime"
                 name="bookingTime"
