@@ -31,7 +31,7 @@ const Form = () => {
     email: "",
     phoneNumber: "",
     date: "",
-    bookingTime: "",
+    bookingTime: "13:00",
     numberOfGuests: 1,
     preferOutdoors: false,
   });
@@ -164,13 +164,13 @@ const Form = () => {
             </div>
             <div className="flex flex-col">
               <label
-                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs appearance-none`}
+                className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs `}
                 htmlFor="bookingTime"
               >
                 Booking Time:
               </label>
               <input
-                className={`${montserrat.className}  bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
+                className={`${montserrat.className}  bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5 appearance-none`}
                 type="time"
                 id="bookingTime"
                 name="bookingTime"
