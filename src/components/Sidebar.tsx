@@ -6,10 +6,10 @@ const CollapsibleSidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-200">
+    <div className="flex h-screen bg-neutral-900">
       {/* Sidebar */}
       
-        <div className="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl">
+        <div className="fixed inset-y-0 left-0 z-50 w-56 bg-neutral-700">
           <div className="p-4">
             <h1 className="text-xl font-bold">Sidebar</h1>
             {/* Sidebar content goes here */}
