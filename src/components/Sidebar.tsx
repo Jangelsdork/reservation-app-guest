@@ -23,7 +23,7 @@ const CollapsibleSidebar: React.FC = () => {
       >
         <div className="fixed inset-y-0 left-0 z-50 w-64 bg-neutral-900 shadow-xl">
           <div id='container' className="flex flex-col w-100%">
-            <div id='collapse' className='flex flex-row justify-end pr-2 sm:pr-4 pt-10'>
+            <div id='collapse' className='flex flex-row justify-end pr-2 sm:pr-4 pt-10 sm:pt10'>
             <button
           onClick={() => setIsOpen(!isOpen)}
         ><TfiArrowCircleLeft />
