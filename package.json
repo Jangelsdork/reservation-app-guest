@@ -11,6 +11,8 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "antd": "^5.11.3",
+    "avvvatars-react": "^0.4.2",
     "next": "14.0.2",
     "next-themes": "^0.2.1",
     "react": "^18",
