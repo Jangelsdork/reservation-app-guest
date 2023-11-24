@@ -6,6 +6,63 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode      = "prisma"
+}
+
+
+model venue {
+id Int @id @default(autoincrement())
+venue_name String @db.varchar(100)
+address_street String @db.varchar(100)
+address_city String @db.varchar(50)
+address_postcode String @db.varchar(20)
+address_country String @db.varchar(50)
+venue_booking_notes String @db.varchar(500)
+}
+
+model booking { 
+  id Int @id @default(autoincrement())
+  booking_date Int @db.Date(6) 
+  start_time Int @db.Time(4)	
+  end_time Int @db.Time(4)	
+  party_size Int
+  guest_id guest @relation(fields: [guestId], references: [id])
+  venue_id venue @relation(fields: [venueId], references: [id])
+  dining_table_id dining_table @relation(fields: [dining_tableId], references: [id])
+  }
+
+model guest {
+  id Int @id @default(autoincrement())
+  first_name String @db.varchar(50)
+  last_name String @db.varchar(50)
+  email String @db.varchar(100)
+  phone String @db.varchar(15)
+  marketing_consent Boolean @default(true)
+}
+
+model user {
+  id Int @id @default(autoincrement())
+  first_name String @db.varchar(50)
+  last_name String @db.varchar(50)
+  email String @db.varchar(100)
+  role String @db.varchar(50)
+  venue_id Int
+  avatar_url String @db.varchar(50)
+}
+
+model dining_table {
+  id Int @id @default(autoincrement())
+  table_no Int
+  is_outdoor Boolean
+  seats_max Int
+  seats_min Int
+  venue_id venue @relation(fields: [venueId], references: [id])  
+}
+
+model opening_hours {
+  id Int @id @default(autoincrement())
+  opening_hours Json
+  venue_id venue @relation(fields: [venueId], references: [id])    
 }
