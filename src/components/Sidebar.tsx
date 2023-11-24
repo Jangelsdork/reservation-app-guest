@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 "use client"
 import React, { useState } from 'react';
 import { Transition } from '@headlessui/react';
@@ -26,12 +27,6 @@ const CollapsibleSidebar: React.FC = ({ isOpen, setIsOpen }) => {
       >
         <div className="fixed inset-y-0 left-0 z-50 w-64 bg-neutral-900 shadow-xl pl-2 pr-2">
           <div id='container' className="flex flex-col w-100%">
-<<<<<<< HEAD
-            <div id='collapse' className='flex flex-row justify-end pr-2 sm:pr-4 pt-10 sm:pt10'>
-            <button
-          onClick={() => setIsOpen(!isOpen)}
-        ><TfiArrowCircleLeft />
-=======
             <div id='collapse_icon' className='flex flex-row justify-end pr-2 sm:pr-4 pt-10'>
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -50,7 +45,6 @@ const CollapsibleSidebar: React.FC = ({ isOpen, setIsOpen }) => {
               <div className='flex flex-row  items-center gap-4 pl-8'><BsCalendar /> Bookings</div>
               <div className='flex flex-row  items-center gap-4 pl-8'><BsShop />Manage venue</div>
               <div className='flex flex-row  items-center gap-4 pl-8'><BsPeople /> Manage People</div>
->>>>>>> 5735049c27ead98a86d12c89b9fa34f1d2c7624f
 
             </div>
           </div>
