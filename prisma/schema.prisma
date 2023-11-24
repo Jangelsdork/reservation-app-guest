@@ -64,10 +64,5 @@ model dining_table {
 model opening_hours {
   id Int @id @default(autoincrement())
   opening_hours Json
-<<<<<<< HEAD
-  venue_id venue @relation(fields: [venueId], references: [id])    
-}
-=======
   venue_id venue @relation(fields: [venueId], references: [id])    // one venue can have one opening / one opening can have one venue / 1/1 
 }
->>>>>>> 00ed738 ( working on schema)
