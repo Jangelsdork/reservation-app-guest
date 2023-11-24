@@ -25,12 +25,12 @@ venue_booking_notes String @db.varchar(500)
 model booking { 
   id Int @id @default(autoincrement())
   booking_date Int @db.Date(6) 
-  start_time Int @db.Time(4)	
+  start_time Int  
   end_time Int @db.Time(4)	
   party_size Int
-  guest_id guest @relation(fields: [guestId], references: [id])
-  venue_id venue @relation(fields: [venueId], references: [id])
-  dining_table_id dining_table @relation(fields: [dining_tableId], references: [id])
+  guest_id guest @relation(fields: [guestId], references: [id]) // One guest can have many bookings / one booking can have one guest 
+  venue_id venue @relation(fields: [venueId], references: [id]) // one venue can have many bookings / one booking can have one venue
+  dining_table_id dining_table @relation(fields: [dining_tableId], references: [id]) //one booking can have one dining_table / one dining table can have many bookings 
   }
 
 model guest {
@@ -48,7 +48,7 @@ model user {
   last_name String @db.varchar(50)
   email String @db.varchar(100)
   role String @db.varchar(50)
-  venue_id Int
+  venue_id Int // one venue can have many users 
   avatar_url String @db.varchar(50)
 }
 
@@ -58,11 +58,16 @@ model dining_table {
   is_outdoor Boolean
   seats_max Int
   seats_min Int
-  venue_id venue @relation(fields: [venueId], references: [id])  
+  venue_id venue @relation(fields: [venueId], references: [id])  //one venue can have many dining tables / one dining table can have one venue 
 }
 
 model opening_hours {
   id Int @id @default(autoincrement())
   opening_hours Json
+<<<<<<< HEAD
   venue_id venue @relation(fields: [venueId], references: [id])    
 }
+=======
+  venue_id venue @relation(fields: [venueId], references: [id])    // one venue can have one opening / one opening can have one venue / 1/1 
+}
+>>>>>>> 00ed738 ( working on schema)
