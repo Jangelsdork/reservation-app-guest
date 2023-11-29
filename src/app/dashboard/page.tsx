@@ -9,7 +9,7 @@ import { Calendar } from 'antd';
 
 type Props = {}
 
-const index = (props: Props) => {
+const Index = (props: Props) => {
 
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
@@ -35,4 +35,4 @@ const index = (props: Props) => {
   )
 }
 
-export default index
+export default Index
