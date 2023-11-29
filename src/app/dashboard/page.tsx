@@ -11,7 +11,7 @@ type Props = {}
 
 const index = (props: Props) => {
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   return (
     <div className="flex h-screen bg-gray-200">
@@ -26,7 +26,7 @@ const index = (props: Props) => {
 
           </button>
           <div className='w-[80vw]'>
-            <Calendar className=''/>
+            {/* <Calendar className=''/> */}
           </div>
           {/* Main content goes here */}
         </div>

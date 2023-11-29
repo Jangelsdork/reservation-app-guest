@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 "use client"
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Transition } from '@headlessui/react';
 import { TfiArrowCircleLeft } from "react-icons/tfi";
 import { BsCalendar, BsPeople, BsShop } from "react-icons/bs";
@@ -10,8 +10,15 @@ import Avvvatars from 'avvvatars-react'
 
 
 
+type Props = {
+                isOpen: boolean, 
+                setIsOpen: Dispatch<SetStateAction<boolean>> }
 
-const CollapsibleSidebar: React.FC = ({ isOpen, setIsOpen }) => {
+
+
+
+
+const CollapsibleSidebar: React.FC = ({isOpen, setIsOpen}: Props) => {
 
   return (
     <div >

@@ -11,45 +11,94 @@ datasource db {
   relationMode      = "prisma"
 }
 
+model Promoter {
+  id             Int    @id @default(autoincrement())
+  first          String
+  last           String
+  email          String
+  phone          String
+  country        String
+  description    String
+  status         Boolean @default(true)
+  dateResolved   String @default("")
+  user           String @default("user_2QNN74OnVmabb07dho0hOE4NUVE")
+  submissionDate String @default("May 29th 2023, 2:54:33 pm")
+
+  PromoterCompany PromoterCompany[]
+}
+
+model Company {
+  id                 Int    @id @default(autoincrement())
+  company_name       String
+  company_email      String
+  company_street     String
+  company_street_num String
+  company_postcode   String
+  company_city       String
+  company_state      String
+  company_country    String
+
+  PromoterCompany PromoterCompany[]
+}
+
+model PromoterCompany {
+  id         Int      @id @default(autoincrement())
+  promoter   Promoter @relation(fields: [promoterId], references: [id])
+  promoterId Int
+  company    Company  @relation(fields: [companyId], references: [id])
+  companyId  Int
+  @@index([promoterId])
+  @@index([companyId])
+}
 
 model venue {
 id Int @id @default(autoincrement())
-venue_name String @db.varchar(100)
-address_street String @db.varchar(100)
-address_city String @db.varchar(50)
-address_postcode String @db.varchar(20)
-address_country String @db.varchar(50)
-venue_booking_notes String @db.varchar(500)
+venue_name String 
+address_street String @db.VarChar(100)
+address_city String @db.VarChar(50)
+address_postcode String @db.VarChar(20)
+address_country String @db.VarChar(50)
+venue_booking_notes String @db.VarChar(500)
+tables dining_table[]
+bookings booking[]
+users user[]
+hours opening_hours?  
 }
 
 model booking { 
   id Int @id @default(autoincrement())
-  booking_date Int @db.Date(6) 
-  start_time Int  
-  end_time Int @db.Time(4)	
+  booking_date String @db.VarChar(12)
+  start_time String @db.VarChar(10) 
+  end_time String @db.VarChar(10)
   party_size Int
-  guest_id guest @relation(fields: [guestId], references: [id]) // One guest can have many bookings / one booking can have one guest 
-  venue_id venue @relation(fields: [venueId], references: [id]) // one venue can have many bookings / one booking can have one venue
-  dining_table_id dining_table @relation(fields: [dining_tableId], references: [id]) //one booking can have one dining_table / one dining table can have many bookings 
+  guestId Int @unique 
+  guest guest @relation(fields: [guestId], references: [id]) // One guest can have many bookings / one booking can have one guest 
+  venueId Int @unique
+  venue venue @relation(fields: [venueId], references: [id]) // one venue can have many bookings / one booking can have one venue
+  dining_table dining_table[] //one booking can have one dining_table / one dining table can have many bookings 
   }
 
 model guest {
   id Int @id @default(autoincrement())
-  first_name String @db.varchar(50)
-  last_name String @db.varchar(50)
-  email String @db.varchar(100)
-  phone String @db.varchar(15)
+  first_name String @db.VarChar(50)
+  last_name String @db.VarChar(50)
+  email String @db.VarChar(100)
+  phone String @db.VarChar(15)
   marketing_consent Boolean @default(true)
+  bookings booking[]
 }
 
 model user {
   id Int @id @default(autoincrement())
-  first_name String @db.varchar(50)
-  last_name String @db.varchar(50)
-  email String @db.varchar(100)
-  role String @db.varchar(50)
-  venue_id Int // one venue can have many users 
-  avatar_url String @db.varchar(50)
+  first_name String @db.VarChar(50)
+  last_name String @db.VarChar(50)
+  email String @db.VarChar(100)
+  role String @db.VarChar(50)
+  venueId Int @unique
+  venue venue @relation(fields: [venueId], references: [id]) 
+  avatar_url String @db.VarChar(50)
+
+
 }
 
 model dining_table {
@@ -58,11 +107,19 @@ model dining_table {
   is_outdoor Boolean
   seats_max Int
   seats_min Int
-  venue_id venue @relation(fields: [venueId], references: [id])  //one venue can have many dining tables / one dining table can have one venue 
+  venueId Int
+  venue venue @relation(fields: [venueId], references: [id])  //one venue can have many dining tables / one dining table can have one venue 
+  bookingId Int 
+  booking booking @relation(fields: [bookingId], references: [id])
+
+  @@index([venueId])
+  @@index([bookingId])
+
 }
 
 model opening_hours {
   id Int @id @default(autoincrement())
   opening_hours Json
-  venue_id venue @relation(fields: [venueId], references: [id])    // one venue can have one opening / one opening can have one venue / 1/1 
+  venueId  Int  @unique
+  venue venue @relation(fields: [venueId], references: [id])    // one venue can have one opening / one opening can have one venue / 1/1 
 }
