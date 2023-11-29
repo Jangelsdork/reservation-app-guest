@@ -18,7 +18,7 @@ type Props = {
 
 
 
-const CollapsibleSidebar: React.FC = ({isOpen, setIsOpen}: Props) => {
+const CollapsibleSidebar = ({isOpen, setIsOpen}: Props) => {
 
   return (
     <div >
