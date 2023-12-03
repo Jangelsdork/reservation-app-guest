@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import connect from "planetscale";
+import { connect } from "@planetscale/database"
 
 /**
  * Creates a connection to the database.

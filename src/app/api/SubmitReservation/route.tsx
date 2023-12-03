@@ -1,12 +1,11 @@
-/* eslint-disable import/prefer-default-export */
-import {NextRequest, NextResponse} from "next/server";
-import { getConnection } from "../../../../planetscale"
+import { PrismaClient } from "@prisma/client"
+import { NextResponse } from "next/server";
 
-export async function GET (request: NextRequest){
-    const greeting = "Hello World!!"
-    const json = {
-        greeting
-    };
-    
-    return NextResponse.json(json);
+
+
+const prisma = new PrismaClient()
+
+export  async function GET(request) {
+  const posts = await prisma.promoter.findMany()
+  return NextResponse.json(posts)
 }
