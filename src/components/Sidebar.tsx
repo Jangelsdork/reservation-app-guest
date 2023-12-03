@@ -32,12 +32,12 @@ const CollapsibleSidebar = ({isOpen, setIsOpen}: Props) => {
         leaveFrom="translate-x-0"
         leaveTo="-translate-x-full"
       >
-        <div className="fixed inset-y-0 left-0 z-50 w-64 bg-neutral-900 shadow-xl pl-2 pr-2">
+        <div className="fixed inset-y-0 left-0 z-50 w-64 h-[100vh] bg-neutral-900 shadow-xl pl-2 pr-2">
           <div id='container' className="flex flex-col w-100%">
             <div id='collapse_icon' className='flex flex-row justify-end pr-2 sm:pr-4 pt-10'>
               <button
                 onClick={() => setIsOpen(!isOpen)}
-              ><TfiArrowCircleLeft />
+              ><TfiArrowCircleLeft className="sm:bg-black" />
 
               </button>
             </div>
