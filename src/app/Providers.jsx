@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 'use client'
 
 import { ThemeProvider } from 'next-themes'
