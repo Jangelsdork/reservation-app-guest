@@ -14,10 +14,13 @@ interface FormData {
   lastName: string;
   email: string;
   phoneNumber: string;
+  marketing_consent: boolean;
   date: string;
   bookingTime: string;
+  endTime: string
   numberOfGuests: number;
   preferOutdoors: boolean;
+  
 }
 
 const Form = () => {
@@ -30,8 +33,10 @@ const Form = () => {
     lastName: "",
     email: "",
     phoneNumber: "",
+    marketing_consent: false,
     date: "",
     bookingTime: "13:00",
+    endTime: "23:59",
     numberOfGuests: 1,
     preferOutdoors: false,
   });
@@ -49,11 +54,37 @@ const Form = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const postForm = async (inputData:FormData) => {
+    try{
+      const res: Response = await fetch ("/api/SubmitReservation",
+      {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify(inputData),
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
+      const data = await res.json();
+
+      if(data.response === "success"){
+        console.log("success client")
+      }
+    } catch (error){
+      console.log(error)
+    }
+  }
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here using formData state
     console.log(formData);
+
+    await postForm(formData)
+    
   };
+
 
   return (
     <div>

@@ -11,6 +11,7 @@ type Booking = {
   start_time: string; 
   end_time: String;
   party_size: number; 
+  prefer_outdoors: boolean
 }
 
 
@@ -19,7 +20,7 @@ const prisma = new PrismaClient()
 
 // eslint-disable-next-line import/prefer-default-export
 export  async function POST(req: Request) {
-  const data = await req.json();
+  const data:Booking = await req.json();
   console.log(data)
 
   return new Response("success")
