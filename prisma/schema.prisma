@@ -85,7 +85,7 @@ model guest {
   last_name String @db.VarChar(50)
   email String @db.VarChar(100)
   phone String @db.VarChar(15)
-  marketing_consent Boolean @default(true)
+  marketing_consent Boolean @default(false)
   bookings booking[]
 }
 

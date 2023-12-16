@@ -24,10 +24,6 @@ interface FormData {
 }
 
 const Form = () => {
-
-
-
-
     const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
