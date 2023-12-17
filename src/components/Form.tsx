@@ -1,13 +1,9 @@
+/* eslint-disable import/extensions */
+
 "use client";
-import { useState } from "react";
-import React from "react";
+
+import React, { useState } from "react";
 import { syne, montserrat, playfair } from "@/app/fonts";
-
-
-
-
-
-type Props = {};
 
 interface FormData {
   firstName: string;
@@ -17,14 +13,13 @@ interface FormData {
   marketing_consent: boolean;
   date: string;
   bookingTime: string;
-  endTime: string
+  endTime: string;
   numberOfGuests: number;
   preferOutdoors: boolean;
-  
 }
 
 const Form = () => {
-    const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     email: "",
@@ -37,9 +32,7 @@ const Form = () => {
     preferOutdoors: false,
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement >
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
 
     const fieldValue = type === "checkbox" ? checked : value;
@@ -50,37 +43,33 @@ const Form = () => {
     });
   };
 
-  const postForm = async (inputData:FormData) => {
-    try{
-      const res: Response = await fetch ("/api/SubmitReservation",
-      {
+  const postForm = async (inputData: FormData) => {
+    try {
+      const res: Response = await fetch("/api/SubmitReservation", {
         method: "POST",
         mode: "cors",
         body: JSON.stringify(inputData),
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-      })
+      });
       const data = await res.json();
 
-      if(data.response === "success"){
-        console.log("success client")
+      if (data) {
+        console.log(data);
       }
-    } catch (error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
-  }
-
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here using formData state
     console.log(formData);
 
-    await postForm(formData)
-    
+    await postForm(formData);
   };
-
 
   return (
     <div>
@@ -254,7 +243,6 @@ const Form = () => {
             Submit
           </button>
         </form>
-      
       </div>
     </div>
   );

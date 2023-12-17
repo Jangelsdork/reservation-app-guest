@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client"
-import { Result } from "@prisma/client/runtime/library";
 import { NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import { Prisma } from "@prisma/client";
@@ -21,7 +20,7 @@ type Booking = {
 
 
 // eslint-disable-next-line import/prefer-default-export
-export  async function POST(req: Request, res: NextApiResponse) {
+export  async function POST(req: Request, res: NextApiResponse<Data>) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'method not allowed'});
   }
@@ -32,22 +31,23 @@ export  async function POST(req: Request, res: NextApiResponse) {
 
   try {
 
-    //get the req.body 
+    // get the req.body 
   const form:Booking = await req.json();
 
-    //start a transaction 
+    // start a transaction 
     await prisma.$transaction(async (tx:Prisma.TransactionClient) => {
-      //insert into guest table
+      // insert into guest table
       const newGuest = await tx.guest.create({
         data: {
           first_name: form.first_name,
           last_name: form.last_name,
           email: form.email,
-          phone: form.phone
+          phone: form.phone,
+          marketing_consent: false
         }
       })
 
-      //insert into booking table
+      // insert into booking table
       await tx.booking.create({
         data: {
           booking_date: form.booking_date,
@@ -55,20 +55,16 @@ export  async function POST(req: Request, res: NextApiResponse) {
           end_time: form.end_time,
           party_size: form.party_size,
           guestId: newGuest.id,
-          //hardcode venue id for now - will update as different venues are available
-          venueId: 1, 
-
-
+          venueId: 2
         }
-      })
-    })
+      });
+    });
+    return NextResponse.json({ message: 'success' })
+  }
+  catch (error) {
+    return NextResponse.json({message: error, POST})
+  }finally {
+    await prisma.$disconnect()
   }
 
-  // const data:Booking = await req.json();
-  // const result = await prisma.$queryRaw``
-  // console.log(data)
-
-  // return new Response("success")
-  // const posts = await prisma.promoter.findMany()
-  // return NextResponse.json(posts)
 }
