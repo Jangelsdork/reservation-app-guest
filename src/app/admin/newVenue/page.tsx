@@ -5,6 +5,7 @@
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -30,6 +31,8 @@ const formSchema = z.object({
 
 export default function VenueForm(){
 
+    const [submitSuccess, setSubmitSuccess] = useState<boolean>(false)
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues:{
@@ -40,6 +43,13 @@ export default function VenueForm(){
             address_country: ""
         }
     })
+
+    function Submitted(){
+        if(submitSuccess){
+            return <div>your venue has been submitted</div>
+    }
+    return <div></div>
+}
 
     const postForm = async (values: z.infer<typeof formSchema>) => {
         try{
@@ -56,6 +66,7 @@ export default function VenueForm(){
     
           if(data){
             console.log(data)
+            setSubmitSuccess(true)
           }
         } catch (error){
           console.log(error)
@@ -65,8 +76,10 @@ export default function VenueForm(){
     // submit handler
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        if(submitSuccess !== true){
         console.log(JSON.stringify(values))
         await postForm(values)
+        }
     }
 
  
@@ -164,8 +177,11 @@ export default function VenueForm(){
                 )}
                 />
                 <Button type="submit">Submit</Button>
+                <Submitted />
             </form>
+            
         </Form>
+        
         </div>
     )
 }
