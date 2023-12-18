@@ -66,7 +66,7 @@ export  async function POST(req: Request, res: NextApiResponse<Data>) {
     return NextResponse.json({ message: 'success' })
   }
   catch (error) {
-    return NextResponse.json({message: error, POST})
+    return NextResponse.json({message: error})
   }finally {
     await prisma.$disconnect()
   }
