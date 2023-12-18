@@ -43,7 +43,7 @@ export  async function POST(req: Request, res: NextApiResponse<Data>) {
           last_name: form.last_name,
           email: form.email,
           phone: form.phone,
-          marketing_consent: false
+          marketing_consent: false,
         }
       })
 
@@ -54,8 +54,12 @@ export  async function POST(req: Request, res: NextApiResponse<Data>) {
           start_time: form.start_time,
           end_time: form.end_time,
           party_size: form.party_size,
-          guestId: newGuest.id,
-          venueId: 2
+          guest: {
+            connect: { id: newGuest.id },
+          },
+          venue: {
+            connect: { id : 2 }
+          } 
         }
       });
     });

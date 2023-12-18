@@ -76,7 +76,7 @@ model booking {
   guest guest @relation(fields: [guestId], references: [id]) // One guest can have many bookings / one booking can have one guest 
   venueId Int @unique
   venue venue @relation(fields: [venueId], references: [id]) // one venue can have many bookings / one booking can have one venue
-  dining_table dining_table[] //one booking can have one dining_table / one dining table can have many bookings 
+  // dining_table dining_table[] //one booking can have one dining_table / one dining table can have many bookings 
   }
 
 model guest {
@@ -110,11 +110,11 @@ model dining_table {
   seats_min Int
   venueId Int
   venue venue @relation(fields: [venueId], references: [id])  //one venue can have many dining tables / one dining table can have one venue 
-  bookingId Int 
-  booking booking @relation(fields: [bookingId], references: [id])
+  // bookingId Int 
+  // booking booking @relation(fields: [bookingId], references: [id])
 
   @@index([venueId])
-  @@index([bookingId])
+  // @@index([bookingId])
 
 }
 

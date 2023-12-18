@@ -26,7 +26,7 @@ const Form = () => {
     phoneNumber: "",
     marketing_consent: false,
     date: "",
-    bookingTime: "13:00",
+    bookingTime: "",
     endTime: "23:59",
     numberOfGuests: 1,
     preferOutdoors: false,
