@@ -148,15 +148,15 @@ const Form = () => {
           <div className="flex flex-col pt-3">
             <label
               className={`${montserrat.className} text-black dark:text-amber-100 font-light text-xs`}
-              htmlFor="phoneNumber"
+              htmlFor="phone"
             >
               Phone Number:
             </label>
             <input
               className={`${montserrat.className}  bg-stone-50 dark:bg-zinc-800 font-light text-s p-0.5`}
               type="tel"
-              id="phoneNumber"
-              name="phoneNumber"
+              id="phone"
+              name="phone"
               value={formData.phone}
               onChange={handleChange}
             />
