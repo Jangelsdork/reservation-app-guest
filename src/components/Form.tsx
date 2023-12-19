@@ -9,7 +9,7 @@ interface FormData {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: string;
+  phone: string;
   marketing_consent: boolean;
   date: string;
   bookingTime: string;
@@ -23,7 +23,7 @@ const Form = () => {
     firstName: "",
     lastName: "",
     email: "",
-    phoneNumber: "",
+    phone: "",
     marketing_consent: false,
     date: "",
     bookingTime: "",
@@ -157,7 +157,7 @@ const Form = () => {
               type="tel"
               id="phoneNumber"
               name="phoneNumber"
-              value={formData.phoneNumber}
+              value={formData.phone}
               onChange={handleChange}
             />
           </div>
