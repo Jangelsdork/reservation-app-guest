@@ -28,7 +28,7 @@ const Form = () => {
     date: "",
     bookingTime: "",
     endTime: "23:59",
-    numberOfGuests: "",
+    numberOfGuests: "1",
     preferOutdoors: false,
   });
 

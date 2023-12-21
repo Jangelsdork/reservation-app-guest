@@ -5,7 +5,12 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req:NextRequest): Promise<NextResponse<unknown>> {
 const prisma = new PrismaClient();
 try {
-const bookings = await prisma.booking.findMany()
+const bookings = await prisma.booking.findMany({
+    include: {
+        guest: true,
+    }
+}
+)
 return NextResponse.json({ bookings })
 } catch (error) {
     return NextResponse.json({ error })
