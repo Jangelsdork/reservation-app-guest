@@ -71,10 +71,10 @@ model booking {
   booking_date String @db.VarChar(12)
   start_time String @db.VarChar(10) 
   end_time String @db.VarChar(10)
-  party_size Int
-  guestId Int @unique 
+  party_size String @db.VarChar(2)
+  guestId Int  
   guest guest @relation(fields: [guestId], references: [id]) // One guest can have many bookings / one booking can have one guest 
-  venueId Int @unique
+  venueId Int 
   venue venue @relation(fields: [venueId], references: [id]) // one venue can have many bookings / one booking can have one venue
   // dining_table dining_table[] //one booking can have one dining_table / one dining table can have many bookings 
   }

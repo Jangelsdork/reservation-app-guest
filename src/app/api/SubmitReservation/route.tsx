@@ -12,7 +12,7 @@ type Booking = {
   date: string;
   bookingTime: string;
   endTime: string;
-  numberOfGuests: number;
+  numberOfGuests: string;
   prefer_outdoors: boolean;
 };
 

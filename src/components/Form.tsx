@@ -14,7 +14,7 @@ interface FormData {
   date: string;
   bookingTime: string;
   endTime: string;
-  numberOfGuests: number;
+  numberOfGuests: string;
   preferOutdoors: boolean;
 }
 
@@ -28,7 +28,7 @@ const Form = () => {
     date: "",
     bookingTime: "",
     endTime: "23:59",
-    numberOfGuests: 1,
+    numberOfGuests: "",
     preferOutdoors: false,
   });
 
@@ -208,7 +208,7 @@ const Form = () => {
                 type="number"
                 id="numberOfGuests"
                 name="numberOfGuests"
-                value={formData.numberOfGuests}
+                value={+formData.numberOfGuests}
                 onChange={handleChange}
               />
             </div>
