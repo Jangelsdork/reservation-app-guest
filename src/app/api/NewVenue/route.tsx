@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client"
 import { NextApiResponse, NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 type Venue = {
   venue_name: string;
@@ -15,7 +15,7 @@ type Venue = {
 
 
 // eslint-disable-next-line import/prefer-default-export
-export async function POST(req: NextApiRequest, res: NextApiResponse<Data>) {
+export async function POST(req: NextRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'method not allowed'});
   }
