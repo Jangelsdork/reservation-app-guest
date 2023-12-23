@@ -1,8 +1,9 @@
 import { PrismaClient } from "@prisma/client"
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 
-export async function GET(req:NextRequest): Promise<NextResponse<unknown>> {
+// eslint-disable-next-line import/prefer-default-export
+export async function GET() {
 const prisma = new PrismaClient();
 try {
 const bookings = await prisma.booking.findMany({
