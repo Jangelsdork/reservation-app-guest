@@ -23,6 +23,8 @@ export async function POST(req: NextRequest): Promise<NextResponse<unknown>> {
   try {
     // get the req.body
     const form: Booking = await req.json();
+    console.log(form)
+
 
     // start a transaction
     await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
