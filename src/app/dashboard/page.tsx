@@ -4,15 +4,7 @@ import React from "react";
 import Sidebar from "@/components/Sidebar";
 // import { useState } from "react";
 import { RxHamburgerMenu, RxInfoCircled } from "react-icons/rx";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+
 import { BookingTable, columns } from "./columns"
 import { Booking } from "../api/getAllBookings/route"
 import { DataTable } from "./dataTable"
@@ -38,7 +30,7 @@ export default async function  Index() {
   const data = await getData()
   console.log(data)
   return (
-    <div className="absolute delay-300 w-100% flex h-screen bg-gray-200">
+    <div className="absolute delay-300 w-100% flex min-h-screen bg-gray-200">
       {/* <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} /> */}
       {/* Main content */}
       <div className="flex flex-row w-[100vw] justify-center align-end bg-neutral-800">
