@@ -10,6 +10,7 @@ const bookings = await prisma.booking.findMany({
     include: {
         guest: true,
     }
+
 }
 )
 return NextResponse.json({ bookings })

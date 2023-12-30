@@ -25,8 +25,7 @@ type BookingTable = {
 export const columns: ColumnDef<BookingTable>[] = [
   {
     accessorKey: "date",
-     header: ({ column }) => {
-      return (
+     header: ({ column }) => (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
@@ -34,8 +33,7 @@ export const columns: ColumnDef<BookingTable>[] = [
           Booking Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
-    },
+      ),
   },
   {
     accessorKey: "firstName",

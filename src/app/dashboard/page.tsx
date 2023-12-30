@@ -4,16 +4,17 @@ import React from "react";
 import Sidebar from "@/components/Sidebar";
 // import { useState } from "react";
 import { RxHamburgerMenu, RxInfoCircled } from "react-icons/rx";
-
-import { BookingTable, columns } from "./columns"
-import { Booking } from "../api/getAllBookings/route"
+import { columns } from "./columns"
 import { DataTable } from "./dataTable"
 
 
-async function getData(): Promise<Booking[]> {
-  const response = await fetch("http://localhost:3000/api/getAllBookings")
-  const data =  await response.json()
-  return data.bookings.map((x) => ({
+async function getData(): Promise<[]> {
+  const response = await fetch("http://localhost:3000/api/getAllBookings", {
+    cache: "force-cache",
+  })
+  const returnedData =  await response.json()
+  console.log(returnedData)
+  return returnedData.bookings.map((x) => ({
     date: x.booking_date,
     firstName: x.guest.first_name,
     bookingTime: x.start_time,
@@ -28,7 +29,6 @@ async function getData(): Promise<Booking[]> {
 export default async function  Index() {
   // const [isOpen, setIsOpen] = useState<boolean>(true);
   const data = await getData()
-  console.log(data)
   return (
     <div className="absolute delay-300 w-100% flex min-h-screen bg-gray-200">
       {/* <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} /> */}
