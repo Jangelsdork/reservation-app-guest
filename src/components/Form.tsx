@@ -1,9 +1,50 @@
+/* eslint-disable camelcase */
 /* eslint-disable import/extensions */
 
 "use client";
-
+import * as z from "zod"
 import React, { useState } from "react";
 import { syne, montserrat, playfair } from "@/app/fonts";
+
+const dayjs = require('dayjs')
+
+const invalid_type_error = 'Invalid data type provided for this field'
+const required_error = 'This field cannot be blank'
+const today = dayjs().format("YYYY-MM-DD")
+
+
+export const bookingSchema = z.object({
+  firstName: z
+  .string({ invalid_type_error, required_error })
+  .min(1, { message : required_error}),
+  lastName: z
+  .string({ invalid_type_error, required_error })
+  .min(1, { message : required_error}),
+  email: z
+  .string({ invalid_type_error, required_error })
+  .email('Please provide a valid email')
+  .min(1, { message : required_error}),
+  phone: z
+  .string({ invalid_type_error, required_error })
+  .min(8, { message : "must be a valid mobile number"})
+  .max(15, { message : "must be a valid mobile number"}),
+  marketing_consent: z 
+  .boolean({ invalid_type_error, required_error }),
+  date: z
+  .string({ invalid_type_error, required_error })
+  .min(10)
+  .max(10),
+  bookingTime: z
+  .string({ invalid_type_error, required_error })
+  .min(4, { message : required_error}),
+  numberOfGuests: z
+  .string({ invalid_type_error, required_error })
+  .min(1, { message : required_error}),
+  preferOutdoors: z
+  .boolean({ invalid_type_error, required_error }),
+
+})
+
 
 interface FormData {
   firstName: string;
@@ -32,6 +73,25 @@ const Form = () => {
     preferOutdoors: false,
   });
 
+  const [isError, setIsError] = useState<boolean>(false)
+  const [submitSuccess, setSubmitSuccess] = useState<boolean>(false)
+
+
+  function ErrorMessage() {
+    if(isError===true){
+      console.log("error")
+    return <div className={`${montserrat.className} font-light text-xs text-black dark:text-amber-100 p-2 `}
+    >Error - booking has not been successful - form input not valid</div>
+    
+  }
+}
+function Submitted(){
+  if(submitSuccess){
+      return <div className={`${montserrat.className} font-light text-xs text-black dark:text-amber-100 p-2 `}>Your booking has been successfully submitted</div>
+}
+return <div></div>
+}
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
 
@@ -56,7 +116,7 @@ const Form = () => {
       const data = await res.json();
 
       if (data) {
-        console.log(data);
+        setSubmitSuccess(true)
       }
     } catch (error) {
       console.log(error);
@@ -66,9 +126,16 @@ const Form = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here using formData state
-    console.log(formData);
+    if(submitSuccess !== true){
+    try{
+      bookingSchema.parse(formData)
+      await postForm(formData);
+    } catch(error){
+      console.log(error)
+      setIsError(true)
 
-    await postForm(formData);
+    }
+  }
   };
 
   return (
@@ -242,8 +309,10 @@ const Form = () => {
           >
             Submit
           </button>
+          <ErrorMessage  />     
+          <Submitted /> 
         </form>
-      </div>
+ </div>
     </div>
   );
 };
