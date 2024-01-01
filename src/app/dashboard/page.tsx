@@ -1,15 +1,18 @@
 // "use client";
 
 import React from "react";
-import Sidebar from "@/components/Sidebar";
 import { useState } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./dataTable";
 import SheetComp from "@/components/SheetComp"
 
+const hostname = process.env.NEXT_PUBLIC_REF_URL
+
+
+console.log(hostname+"api/getUpcomingBookings")
+
 async function getData(): Promise<[]> {
-  const response = await fetch(
-    "http://localhost:3000/api/getUpcomingBookings",
+  const response = await fetch(`${hostname}api/getUpcomingBookings`,
     {
       cache: "no-store",
     }
@@ -32,12 +35,12 @@ export default async function Index() {
   return (
     <div className="absolute delay-300 w-100% flex min-h-screen bg-gray-200">
       {/* Main content */}
-      <div className="flex flex-row w-[100vw] justify-center align-end bg-neutral-800">
+      <div className="flex flex-row min-w-[100vw] justify-center align-end bg-neutral-800">
         <div className="flex-1 p-8">
           <SheetComp /> 
           {/* Main content goes here */}
-          <div className="pl-64">
-            <div className="container mx-auto py-10">
+          <div className="">
+            <div className="container mx-auto max-w-[100vw] py-10">
               <DataTable columns={columns} data={data} />
             </div>
           </div>
