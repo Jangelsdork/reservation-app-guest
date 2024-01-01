@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client"
+import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
 
 type Venue = {
@@ -14,7 +15,7 @@ type Venue = {
 
 
 // eslint-disable-next-line import/prefer-default-export
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest ): Promise<NextResponse<unknown>>  {
  
 
   const prisma = new PrismaClient()
