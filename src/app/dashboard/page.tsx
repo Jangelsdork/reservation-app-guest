@@ -1,12 +1,11 @@
 // "use client";
 
-import React from "react";
-import { useState } from "react";
+import { NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client"
+import SheetComp from "@/components/SheetComp"
 import { columns } from "./columns";
 import { DataTable } from "./dataTable";
-import SheetComp from "@/components/SheetComp"
-import { PrismaClient } from "@prisma/client"
-import { NextResponse } from "next/server";
+
 
 const dayjs = require('dayjs')
 
@@ -14,7 +13,7 @@ const today = dayjs().format("YYYY-MM-DD").toString()
 
 // const hostname = process.env.NEXT_PUBLIC_REF_URL
 
-async function GET() {
+export async function GET() {
   const prisma = new PrismaClient();
   try {
   const bookings = await prisma.booking.findMany({
