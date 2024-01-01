@@ -8,7 +8,7 @@ import { columns } from "./columns";
 import { DataTable } from "./dataTable";
 
 async function getData(): Promise<[]> {
-  const response = await fetch("http://localhost:3000/api/getAllBookings", {
+  const response = await fetch("http://localhost:3000/api/getUpcomingBookings", {
     cache: "no-store",
   });
   const returnedData = await response.json();
