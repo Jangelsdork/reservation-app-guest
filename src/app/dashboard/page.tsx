@@ -13,7 +13,7 @@ const today = dayjs().format("YYYY-MM-DD").toString();
 // const hostname = process.env.NEXT_PUBLIC_REF_URL
 
 // database call to return all future bookings 
-export async function GET() {
+async function GET() {
   const prisma = new PrismaClient();
   try {
     const bookings = await prisma.booking.findMany({
