@@ -19,6 +19,24 @@ async function getData(): Promise<[]> {
   );
   const returnedData = await response.json();
 
+  interface CalledData {
+      id: number,
+      booking_date: string
+      start_time: string,
+      end_time: string,
+      party_size: string,
+      guestId: number,
+      venueId: number,
+      guest: {
+        id:number,
+        first_name:string,
+        last_name: string,
+        email: string,
+        phone: string,
+        marketing_consent: boolean
+      }
+  }
+
   console.log(returnedData);
   return returnedData.bookings.map((x) => ({
     date: x.booking_date,
