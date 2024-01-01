@@ -87,6 +87,7 @@ const Form = () => {
 }
 function Submitted(){
   if(submitSuccess){
+      setIsError(false)
       return <div className={`${montserrat.className} font-light text-xs text-black dark:text-amber-100 p-2 `}>Your booking has been successfully submitted</div>
 }
 return <div></div>
