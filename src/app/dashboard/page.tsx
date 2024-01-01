@@ -5,18 +5,45 @@ import { useState } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./dataTable";
 import SheetComp from "@/components/SheetComp"
+import { PrismaClient } from "@prisma/client"
+import { NextResponse } from "next/server";
 
-const hostname = process.env.NEXT_PUBLIC_REF_URL
+const dayjs = require('dayjs')
 
+const today = dayjs().format("YYYY-MM-DD").toString()
 
-console.log(hostname+"api/getUpcomingBookings")
+// const hostname = process.env.NEXT_PUBLIC_REF_URL
+
+async function GET() {
+  const prisma = new PrismaClient();
+  try {
+  const bookings = await prisma.booking.findMany({
+      where: {
+          booking_date: {
+              gte: today
+          }
+      },
+      include: {
+          guest: true,
+      }
+  
+  }
+  )
+  return NextResponse.json({ bookings })
+  } catch (error) {
+      return NextResponse.json({ error })
+  }
+  
+  
+  }
 
 async function getData(): Promise<[]> {
-  const response = await fetch(`${hostname}api/getUpcomingBookings`,
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await GET()
+  // fetch(`${hostname}api/getUpcomingBookings`,
+  //   {
+  //     cache: "no-store",
+  //   }
+  // );
   const returnedData = await response.json();
 
   interface CalledData {
