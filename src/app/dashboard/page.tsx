@@ -62,7 +62,7 @@ async function getData( ): Promise<[]> {
     };
   }
 
-  console.log(returnedData);
+  // console.log(returnedData);
   return returnedData.bookings.map((x: CalledData) => ({
     date: x.booking_date,
     firstName: x.guest.first_name,
