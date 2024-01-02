@@ -6,6 +6,8 @@ import SheetComp from "@/components/SheetComp";
 import { columns } from "./columns";
 import { DataTable } from "./dataTable";
 
+export const revalidate = "no-store"
+
 const dayjs = require("dayjs");
 
 const today = dayjs().format("YYYY-MM-DD").toString();
@@ -33,7 +35,7 @@ async function GET() {
 }
 
 
-async function getData(): Promise<[]> {
+async function getData( ): Promise<[]> {
   const response = await GET();
   // fetch(`${hostname}api/getUpcomingBookings`,
   //   {
