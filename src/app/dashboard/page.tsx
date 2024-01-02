@@ -6,7 +6,7 @@ import SheetComp from "@/components/SheetComp";
 import { columns } from "./columns";
 import { DataTable } from "./dataTable";
 
-export const revalidate = "no-store"
+export const revalidate = 0
 
 const dayjs = require("dayjs");
 
