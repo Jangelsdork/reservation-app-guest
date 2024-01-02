@@ -69,6 +69,7 @@ async function getData( ): Promise<[]> {
     bookingTime: x.start_time,
     numberOfGuests: x.party_size,
     prefer_outdoors: false,
+    id: x.id
   }));
 }
 
