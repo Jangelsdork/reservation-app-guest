@@ -1,6 +1,28 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
+interface Booking {
+  bookings: [
+    {
+  id: number;
+  booking_date: string;
+  start_time: string;
+  end_time: string;
+  party_size: string;
+  guestId: number;
+  venueId: number;
+  guest: {
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone: string;
+    marketing_consent: boolean;
+  };
+}
+]
+}
+
 
 
 const Page = async ({ params }: { params: { id: string } }) => {
@@ -24,14 +46,14 @@ const Page = async ({ params }: { params: { id: string } }) => {
         }
       }
     
-      async function getData( ): Promise<[]> {
+      async function getData( ): Promise<Booking> {
         const response = await GET();
         const returnedData = await response.json();
-        console.log(returnedData)
         return returnedData
       }
     
-      const data = await getData()
+      const data: Booking = await getData()
+      console.log(data)
 
     
   return (
