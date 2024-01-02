@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-type Props = {};
 
 const Nav = () => {
   const [mounted, setMounted] = useState(false)

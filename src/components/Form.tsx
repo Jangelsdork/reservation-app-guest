@@ -2,15 +2,15 @@
 /* eslint-disable import/extensions */
 
 "use client";
+
 import * as z from "zod"
 import React, { useState } from "react";
 import { syne, montserrat, playfair } from "@/app/fonts";
 
-const dayjs = require('dayjs')
 
 const invalid_type_error = 'Invalid data type provided for this field'
 const required_error = 'This field cannot be blank'
-const today = dayjs().format("YYYY-MM-DD")
+
 
 
 export const bookingSchema = z.object({

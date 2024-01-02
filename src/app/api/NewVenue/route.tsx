@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client"
-import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
 
 type Venue = {

@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-import { NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
-import { Prisma } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 
 type Booking = {
   firstName: string;
