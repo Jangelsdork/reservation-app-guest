@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import SheetComp from "@/components/SheetComp";
 
 interface Booking {
   bookings: [
@@ -53,13 +54,31 @@ const Page = async ({ params }: { params: { id: string } }) => {
       }
     
       const data: Booking = await getData()
-      console.log(data)
+      const thisBooking = data.bookings[0]
+      
 
     
   return (
-    <div>
-    <div>Booking: {params.id}</div>
-    <div>Name: {data.bookings[0].guest.first_name}{" "}{data.bookings[0].guest.last_name}</div>
+    <div className="p-10 min-h-[100vh] bg-neutral-800">
+    <SheetComp />
+    <div className="p-10  sm:grid sm:grid-cols-2 col-span-1 bg-neutral-800">
+      <div>
+    <h2 className="">Booking info</h2>
+    <p>Date: {thisBooking.booking_date}</p>
+    <p>Time: {thisBooking.start_time}</p>
+    <p>Party size: {thisBooking.party_size}</p>
+    <p>Party size: {thisBooking.party_size}</p>
+    <p>Prefer outdoors?: No</p>
+      </div>
+      <div>
+    <h2 className="pt-10 sm:pt-0">Guest info</h2>
+    <p>Name: {thisBooking.guest.first_name}{" "}{thisBooking.guest.last_name}</p>
+    <p>Email: {thisBooking.guest.email}</p>
+    <p>Phone: {thisBooking.guest.phone}</p>
+    <p>Marketing consent?: </p>
+    </div>
+
+    </div>
     </div>
 
   )
