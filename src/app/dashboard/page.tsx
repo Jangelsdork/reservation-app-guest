@@ -84,6 +84,7 @@ export default async function Index() {
           <SheetComp />
           {/* Main content goes here */}
           <div className="">
+            <h1 className="pl-10">All upcoming bookings</h1>
             <div className="container mx-auto max-w-[100vw] py-10">
               <DataTable columns={columns} data={data} />
             </div>
