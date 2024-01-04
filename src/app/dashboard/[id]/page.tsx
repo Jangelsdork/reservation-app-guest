@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import SheetComp from "@/components/SheetComp";
+import { Button } from "@/components/ui/button";
 
 interface Booking {
   bookings: [
@@ -27,6 +28,10 @@ interface Booking {
 
 
 const Page = async ({ params }: { params: { id: string } }) => {
+
+  function handleClick(){
+    console.log("clicked")
+  }
 
     const currentPage = parseInt(params.id)
 
@@ -78,7 +83,11 @@ const Page = async ({ params }: { params: { id: string } }) => {
     <p>Marketing consent?: </p>
     </div>
 
+    
+
     </div>
+    <Button className="mr-4">Delete booking</Button>
+    <Button>Edit booking</Button>
     </div>
 
   )
